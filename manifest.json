@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "GPT Session Token Counter",
+  "description": "Shows an o200k_base token count for the current ChatGPT conversation.",
+  "version": "0.1.0",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "GPT Token Counter"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*"
+      ],
+      "js": ["tokenizer.bundle.js", "content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": [
+    "https://chatgpt.com/*",
+    "https://chat.openai.com/*"
+  ]
+}

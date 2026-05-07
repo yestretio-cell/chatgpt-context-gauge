@@ -1,0 +1,297 @@
+#gpt-token-counter-panel {
+  position: fixed;
+  top: 84px;
+  right: 18px;
+  z-index: 2147483647;
+  width: 238px;
+  color: #f8fafc;
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  line-height: 1.35;
+  overflow: hidden;
+}
+
+#gpt-token-counter-panel * {
+  box-sizing: border-box;
+}
+
+.gtc-header {
+  display: flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 6px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: #0f172a;
+}
+
+.gtc-title {
+  flex: 1;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.gtc-drag,
+.gtc-collapse,
+.gtc-close,
+.gtc-actions button {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #f8fafc;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.gtc-drag,
+.gtc-collapse,
+.gtc-close {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 26px;
+  padding: 0;
+}
+
+.gtc-drag {
+  margin-right: 8px;
+  cursor: grab;
+}
+
+.gtc-collapse {
+  margin-right: 6px;
+}
+
+.gtc-drag:active {
+  cursor: grabbing;
+}
+
+.gtc-body {
+  padding: 12px;
+}
+
+.gtc-total {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.gtc-subtitle {
+  margin-top: 4px;
+  color: #cbd5e1;
+  font-size: 12px;
+}
+
+.gtc-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 7px 12px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.gtc-grid span,
+.gtc-note {
+  color: #cbd5e1;
+}
+
+.gtc-grid strong {
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+}
+
+.gtc-debug {
+  padding: 10px 12px;
+  border-top: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+
+.gtc-debug summary {
+  color: #111827;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.gtc-debug-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px 10px;
+  margin-top: 8px;
+}
+
+.gtc-debug-grid span,
+.gtc-debug label {
+  color: #475569;
+  font-size: 11px;
+}
+
+.gtc-debug-grid strong {
+  max-width: 118px;
+  color: #111827;
+  overflow-wrap: anywhere;
+  text-align: right;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.gtc-debug label {
+  display: block;
+  margin-top: 8px;
+}
+
+.gtc-debug textarea {
+  display: block;
+  width: 100%;
+  height: 58px;
+  margin-top: 4px;
+  padding: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 6px;
+  resize: vertical;
+  color: #111827;
+  background: #ffffff;
+  font: 11px/1.35 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+.gtc-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  color: #e2e8f0;
+  cursor: pointer;
+}
+
+.gtc-toggle input {
+  width: 16px;
+  height: 16px;
+  accent-color: #22c55e;
+}
+
+.gtc-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.gtc-actions button {
+  min-height: 32px;
+  padding: 0 6px;
+  font-size: 12px;
+}
+
+.gtc-actions button:hover,
+.gtc-drag:hover,
+.gtc-collapse:hover,
+.gtc-close:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.gtc-note {
+  margin-top: 10px;
+  font-size: 11px;
+}
+
+#gpt-token-counter-panel.gtc-collapsed {
+  width: 136px;
+}
+
+#gpt-token-counter-panel.gtc-collapsed .gtc-body {
+  display: none;
+}
+
+.gtc-raw-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483646;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(15, 23, 42, 0.48);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.gtc-raw-dialog {
+  display: grid;
+  grid-template-rows: auto minmax(220px, 58vh) auto auto;
+  width: min(760px, 100%);
+  max-height: 82vh;
+  color: #111827;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  border-radius: 8px;
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.34);
+  overflow: hidden;
+}
+
+.gtc-raw-header,
+.gtc-raw-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: #f8fafc;
+}
+
+.gtc-raw-header {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.gtc-raw-header strong {
+  flex: 1;
+  font-size: 14px;
+}
+
+.gtc-raw-header button,
+.gtc-raw-footer button {
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  color: #111827;
+  background: #ffffff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.gtc-raw-header button {
+  width: 30px;
+  height: 28px;
+  padding: 0;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.gtc-raw-text {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: 12px;
+  border: 0;
+  resize: none;
+  outline: none;
+  color: #111827;
+  background: #ffffff;
+  font: 12px/1.45 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  white-space: pre-wrap;
+}
+
+.gtc-raw-footer {
+  justify-content: space-between;
+  border-top: 1px solid #e2e8f0;
+}
+
+.gtc-raw-footer span {
+  color: #475569;
+  font-size: 12px;
+}
+
+.gtc-raw-footer button {
+  min-height: 32px;
+  padding: 0 12px;
+  font-weight: 700;
+}

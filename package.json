@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "build:tokenizer": "esbuild tokenizer-entry.js --bundle --format=iife --target=chrome110 --outfile=tokenizer.bundle.js",
+    "check": "node --check content.js && node --check popup.js && node --check tokenizer.bundle.js"
+  },
+  "dependencies": {
+    "js-tiktoken": "^1.0.21"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.0"
+  }
+}
