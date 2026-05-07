@@ -1,6 +1,6 @@
 # GPT Session Token Counter
 
-ChatGPT conversation pages에서 현재 세션의 `o200k_base` 토큰 수를 보여주는 Chrome 확장 프로그램입니다.
+ChatGPT의 현재 채팅 세션의 `o200k_base` 토큰 수를 보여주는 Chrome 확장 프로그램입니다.
 
 ## 설치
 
